@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .board-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .champion-entry {
+        margin-bottom: 20px;
+        flex: 2;
+    }
+    .trait-combinations {
+        flex: 1;
+        margin-left: 10px;
+    }
+</style>
+
+<h2>Detalhes da Entrada do Board</h2>
+<div class="board-container">
+    <div>
+        {% if board_entries %}
+            <h3>Game ID: {{ board_entries[0].gameId }}, Placement: {{ board_entries[0].placementId }}</h3>
+            {% for entry in board_entries %}
+                <div class="champion-entry">
+                    <p>Champion Name: <a href="{{ url_for('search_champion', champion_name=entry.championName) }}">{{ entry.championName }}</a></p>
+                    <p>Star Level: {{ entry.star }}</p>
+                    <span>Items: 
+                        {% for item_name in entry.item_names %}
+                            <a href="{{ url_for('search_item', item_name=item_name) }}">{{ item_name }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </span>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhuma entrada de board encontrada para este jogo e colocação.</p>
+        {% endif %}
+    </div>
+
+    <div class="trait-combinations">
+        {% if trait_combinations %}
+            <h3>Combinações:</h3>
+            <ul>
+                {% for trait, count in trait_combinations.items() %}
+                <li>{{ trait }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

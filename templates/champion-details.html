@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="champion-container">
+    <div class="champion-info">
+        <h1>{{ champion.Name }}</h1>
+        <p>Cost: {{ champion.Cost }}</p>
+        <p>Health: {{ champion.Health }}</p>
+        <p>Defense: {{ champion.Defense }}</p>
+        <p>Attack: {{ champion.Attack }}</p>
+        <p>Attack Range: {{ champion.Attack_range }}</p>
+        <p>Attack Speed: {{ champion.Attack_Speed }}</p>
+        <p>DPS: {{ champion.DPS }}</p>
+        <p>Skill Name: {{ champion.Skill_Name }}</p>
+        <p>Skill Cost: {{ champion.Skill_Cost }}</p>
+        <p>Traits: {{ champion.Traits }}</p>
+        <p>Appearance Percentage on Boards: {{ champion_percentage | round(2) }}%</p>
+    </div>
+
+    <div class="champion-image">
+        <img src="{{ url_for('static', filename='champions/' ~ champion.Name | replace(' ', '_') ~ '.png') }}" alt="{{ champion.Name }}" />
+    </div>
+</div>
+
+{% if popular_items %}
+    <h2>Top 3 Popular Items</h2>
+    <ul>
+    {% for item in popular_items %}
+        <li><a href="{{ url_for('search_item', item_name=item.NAME) }}">{{ item.NAME }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No popular items data available.</p>
+{% endif %}
+{% endblock %}

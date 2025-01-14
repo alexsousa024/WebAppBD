@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TFT Data Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        header {
+            text-align: center; /* Centraliza o título do cabeçalho */
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Remove a margem padrão */
+            display: flex;
+            justify-content: flex-start; /* Alinha os itens ao início */
+        }
+
+        header nav ul li {
+            margin-right: 20px; /* Espaçamento entre os itens */
+        }
+
+        header nav ul li:first-child {
+            margin-left: 0; /* Remove a margem esquerda do primeiro item */
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #ffffff; /* Cor do texto dos links */
+        }
+
+        .nav-main {
+            display: inline;
+        }
+
+        .nav-search {
+            margin-left: auto; /* Empurra o item de pesquisa para a direita */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Restante do seu código HTML -->
+</body>
+</html>
+
+</head>
+<body>
+    <header>
+        <h1>TFT Data Dashboard</h1>
+        <nav>
+            <ul>
+                <li class="nav-main"><a href="/">Home</a></li>
+                <li class="nav-main"><a href="/games">Games</a></li>
+                <li class="nav-main"><a href="/champions">Champions</a></li>
+                <li class="nav-main"><a href="/items">Items</a></li>
+                <li class="nav-main"><a href="/board">Board</a></li>
+                <li class="nav-main"><a href="/participants">Participants</a></li>
+                <li class="nav-search"><a href="/search">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 TFT Data Dashboard</p>
+    </footer>
+</body>
+</html>

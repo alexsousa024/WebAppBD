@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Game Details</h1>
+<p>All Details of this Game ID: <a href="{{ url_for('all_details', game_id=game.GameId) }}">{{ game.GameId }}</a></p>
+<p>Game Duration: {{ game.GameDuration }}</p>
+
+<h2><a href="{{ url_for('search_participants', game_id=game.GameId) }}">Participants</a></h2>
+{% endblock %}
+

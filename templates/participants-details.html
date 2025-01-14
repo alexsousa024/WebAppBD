@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Participants for Game ID: {{ game_id }}</h2>
+{% if participants %}
+<table>
+    <thead>
+        <tr>
+            <th>Placement</th>
+            <th>Level</th>
+            <th>Last Round</th>
+            <th>In-Game Duration (Minutes)</th>
+            <th>Board</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in participants %}
+        <tr>
+            <td>{{ participant.Placement }}</td>
+            <td>{{ participant.Level }}</td>
+            <td>{{ participant.LastRound }}</td>
+            <td>{{ participant.InGameDurationMinutes | round(2) }}</td>
+            <td><a href="{{ url_for('search_board', game_id=game_id, placement_id=participant.Placement) }}">View Board</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No participants found for Game ID {{ game_id }}.</p>
+{% endif %}
+{% endblock %}
+

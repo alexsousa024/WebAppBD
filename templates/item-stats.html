@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Item Statistics: {{ item.NAME }}</h1>
+
+<p>Item ID: {{ item.ID }}</p>
+<p>Amount of games with the item: {{ item_game_count }}</p>
+<p>Total use of the Item: {{ total_item_count }}</p>
+<p>Mean of game usage: {{ item_mean }}</p>
+
+{% if champion_name %}
+    <p>Most frequent champion with this Item: <a href="{{ url_for('search_champion', champion_name=champion_name) }}">{{ champion_name }}</a></p>
+{% else %}
+    <p>This item wasn't used enough to have an accurate most frequent champion.</p>
+{% endif %}
+
+{% endblock %}

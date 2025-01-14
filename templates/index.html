@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<style>
+    .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .nav-list div:first-child li:first-child {
+        margin-left: 0;
+    }
+
+    .nav-list div {
+        display: flex;
+    }
+
+    .nav-list li {
+        margin: 0 10px; 
+    }
+</style>
+
+<nav>
+    <ul class="nav-list">
+        <div>
+            <li><a href="/">Home</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/champions/">Champions</a></li>
+            <li><a href="/items/">Items</a></li>
+            <li><a href="/board/">Board</a></li>
+            <li><a href="/participants/">Participants</a></li>
+        </div>
+        <div>
+            <li><a href="/search/">Search</a></li>
+        </div>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to TFT Data Dashboard</h1>
+
+<h2>About</h2>
+<p>This web application provides data and statistics from the Teamfight Tactics game. Built using Flask, SQLite, and Jinja.</p>
+
+<h2>Database Statistics</h2>
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Count</th>
+    </tr>
+    <tr>
+        <td>Games</td>
+        <td>{{ stats.n_games }}</td>
+    </tr>
+    <tr>
+        <td>Champions</td>
+        <td>{{ stats.n_champions }}</td>
+    </tr>
+    <tr>
+        <td>Items</td>
+        <td>54</td> 
+    </tr>
+    <tr>
+        <td>Board Entries</td>
+        <td>633734</td> 
+    </tr>
+</table>
+
+<div class="winner-traits-link">
+    <h3>Explore More:</h3>
+    <p><a href="/winner-traits/">Top 4 Popular Traits Among Winners</a></p>
+    <p><a href="/winner-champions/">Top 4 Popular Champions Among Winners</a></p>
+
+
+
+{% if mensagem %}
+<div class="alert {{ mensagem.categoria }}">
+    {{ mensagem.texto }}
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+
+
+{% endif %}
+{% endblock %}

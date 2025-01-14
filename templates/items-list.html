@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>List of TFT Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <td>{{ item.ID }}</td>
+      <td>
+        {% if item.NAME %}
+          <a href="{{ url_for('search_item', item_name=item.NAME) }}">{{ item.NAME }}</a>
+        {% else %}
+          Unknown Item
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

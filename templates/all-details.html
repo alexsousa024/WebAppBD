@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Game Details: {{ game_id }}</h2>
+
+{% if game_data %}
+<div style="overflow-x: auto;">
+    <table>
+        <thead>
+            <tr>
+                <th>Placement</th>
+                <th>Level</th>
+                <th>Champion Name</th>
+                <th>Champion Level</th>
+                <th>Items</th>
+                <th>Cost</th>
+                <th>Health</th>
+                <th>Defense</th>
+                <th>Attack</th>
+                <th>Attack Range</th>
+                <th>Attack Speed</th>
+                <th>DPS</th>
+                <th>Skill Name</th>
+                <th>Skill Cost</th>
+                <th>Traits</th>
+                <th>Game Duration (Minutes)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in game_data %}
+            <tr>
+                <td>{{ entry.Placement }}</td>
+                <td>{{ entry.Level }}</td>
+                <td>{{ entry.championName }}</td>
+                <td>{{ entry.ChampionLevel }}</td>
+                <td>{{ entry.ChampionItems }}</td>
+                <td>{{ entry.Cost }}</td>
+                <td>{{ entry.Health }}</td>
+                <td>{{ entry.Defense }}</td>
+                <td>{{ entry.Attack }}</td>
+                <td>{{ entry.Attack_range }}</td>
+                <td>{{ entry.Attack_Speed }}</td>
+                <td>{{ entry.DPS }}</td>
+                <td>{{ entry.Skill_Name }}</td>
+                <td>{{ entry.Skill_Cost }}</td>
+                <td>{{ entry.Traits }}</td>
+                <td>{{ (entry.GameDuration / 60)|round(1) }} minutes</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No game details available for Game ID {{ game_id }}.</p>
+{% endif %}
+{% endblock %}
+
+
+
+

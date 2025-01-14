@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Top 4 Popular Champions Among Winners</h1>
+
+<div style="width:300px; height:200px;">
+    <canvas id="winnerChampionsChart"></canvas>
+</div>
+
+{% if top_winner_champions %}
+    <ul>
+        {% for champion, percentage in top_winner_champions %}
+            <li>{{ champion.title() }}: {{ percentage|round(2) }}%</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var championsData = {{ top_winner_champions | tojson | safe }};
+
+    var ctx = document.getElementById('winnerChampionsChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: championsData.map(champion => champion[0]),
+            datasets: [{
+                label: 'Percentage of Games Won',
+                backgroundColor: 'rgb(255, 159, 64)',
+                borderColor: 'rgb(255, 159, 64)',
+                data: championsData.map(champion => champion[1])
+            }]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

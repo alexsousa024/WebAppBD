@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Top 4 Popular Traits Among Winners</h1>
+
+<div style="width:400px; height:300px;">
+    <canvas id="winnerTraitsChart"></canvas>
+</div>
+
+{% if top_winner_traits %}
+    <ul>
+        {% for trait, percentage in top_winner_traits %}
+            <li>{{ trait.title() }}: {{ percentage|round(2) }}%</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var traitsData = {{ top_winner_traits | tojson | safe }};
+
+    var ctx = document.getElementById('winnerTraitsChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: traitsData.map(trait => trait[0]),
+            datasets: [{
+                label: 'Percentage of Games Won',
+                backgroundColor: 'rgb(69, 123, 242)',
+                borderColor: 'rgb(69, 123, 242)',
+                data: traitsData.map(trait => trait[1])
+            }]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}
+
+

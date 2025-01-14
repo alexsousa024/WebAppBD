@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>List of TFT Champions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Champion</th>
+      <th>Cost</th>
+      <th>Traits</th>
+      <th>Health</th>
+      <th>Armor</th>
+      <th>Attack Damage</th>
+      <th>Attack Speed</th>
+      <th>DPS</th>
+      <th>Skill</th>
+      <th>Mana</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for champion in champions %}
+    <tr>
+      <td><a href="{{ url_for('search_champion', champion_name=champion.Name) }}">{{ champion.Name }}</a></td>
+      <td>{{ champion.Cost }}</td>
+      <td>{{ champion.Traits }}</td> 
+      <td>{{ champion.Health }}</td>
+      <td>{{ champion.Armor }}</td>
+      <td>{{ champion.Attack }}</td>
+      <td>{{ champion.Attack_Speed }}</td>
+      <td>{{ champion.DPS }}</td>
+      <td>{{ champion.Skill_Name }}</td>
+      <td>{{ champion.Skill_Cost }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+

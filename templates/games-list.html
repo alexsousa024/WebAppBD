@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>List of TFT Games</h1>
+<ul>
+    {% for game in games %}
+        <li>
+            Game <a href="{{ url_for('search_game', game_id=game.GameId) }}">{{ game.GameId }}</a> - Duration: {{ (game.GameDuration / 60) | round(2) }} minutes
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

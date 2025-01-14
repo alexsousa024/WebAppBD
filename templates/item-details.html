@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Item Details</h1>
+<div class="item-image">
+     <img src="{{ url_for('static', filename='items/' + item_name + '.png') }}" alt="{{ item_name }}" />
+</div>
+<p><strong>Name:</strong> {{ item_name }}</p>
+<p>ID: {{ item_id }}</p>
+
+<a href="{{ url_for('item_stats', item_name=item_name) }}">Item Statistics</a>
+
+{% endblock %}

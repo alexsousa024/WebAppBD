@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search in TFT Data</h1>
+<form action="{{ url_for('search') }}" method="post">
+    <input type="text" name="search_query" placeholder="Enter search term">
+    <select name="search_type">
+        <option value="game">Game</option>
+        <option value="champion">Champion</option>
+        <option value="item">Item</option>
+        <option value="board">Board</option>
+        <option value="participant">Participant</option>
+    </select>
+    <input type="number" name="participant_id" placeholder="Enter participant ID (1-8)" min="1" max="8">
+    <button type="submit">Search</button>
+</form>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Participants</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Game ID</th>
+            <th>Placement</th>
+            <th>Level</th>
+            <th>Last Round</th>
+            <th>In-Game Duration (Minutes)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in participants %}
+        <tr>
+            <td>
+                <a href="{{ url_for('search_game', game_id=participant.GameId) }}">{{ participant.GameId }}</a>
+            </td>
+            <td>{{ participant.Placement }}</td>
+            <td>{{ participant.Level }}</td>
+            <td>{{ participant.LastRound }}</td>
+            <td>{{ participant.InGameDurationMinutes | round(2) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% if total_pages > 1 %}
+<nav>
+    <ul class="pagination">
+        {% if page > 1 %}
+            <li><a href="{{ url_for('list_participants', page=1) }}">&laquo; First</a></li>
+            <li><a href="{{ url_for('list_participants', page=page-1) }}">Previous</a></li>
+        {% endif %}
+        {% for p in page_range %}
+            <li class="{{ 'active' if p == page else '' }}">
+                <a href="{{ url_for('list_participants', page=p) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+        {% if page < total_pages %}
+            <li><a href="{{ url_for('list_participants', page=page+1) }}">Next</a></li>
+            <li><a href="{{ url_for('list_participants', page=total_pages) }}">Last &raquo;</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}
+
