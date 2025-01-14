@@ -1,0 +1,308 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px;
+    background: #333; 
+    color: #ffffff;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    padding: 0;
+    margin: 0; 
+    align-items: center; 
+}
+
+nav ul li {
+    margin-right: 20px; 
+}
+
+nav ul li:last-child {
+    margin-right: 0; 
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Outros estilos ... */
+
+
+nav ul li a:hover {
+  color: #F9AA33; 
+  text-decoration: underline;
+}
+header h1 {
+    color: #ffffff;
+}
+
+/* Define a cor padrão para todos os h1 para #333, exceto o h1 no header */
+body h1:not(header h1) {
+    color: #333; /* Cor #333 para todos os outros h1 */
+}
+
+/* Para garantir que todos os outros elementos de cabeçalho (h2, h3, etc.) também sejam #333 */
+body h2, body h3, body h4, body h5, body h6 {
+    color: #333;
+}
+
+a {
+  color:  #333;
+}
+
+header a {
+    color: #ffffff;
+}
+
+a:hover, a:active {
+  color: #f4a261;
+}
+
+button, input[type="submit"], input[type="reset"] {
+  background-color: #f4a261;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+  background-color: #35424a;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+main {
+    padding-bottom: 100px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Estilos para formulários */
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  header {
+    padding: 10px 0;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 5px 0;
+  }
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.alert.success {
+  background-color: #4CAF50;
+}
+
+.alert.info {
+  background-color: #2196F3;
+}
+
+.alert.warning {
+  background-color: #ff9800;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.body-board nav ul li a {
+  color: #333;
+}
+
+.body-board nav ul li a:hover {
+  color: #F9AA33; 
+}
+
+/* Estilos para botões com ícones */
+.button-icon {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.button-icon:hover {
+  background-color: #666;
+}
+
+.champion-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.champion-info {
+    flex-grow: 2;
+}
+
+.champion-image img {
+    max-width: 200px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    margin-top: 20px;
+    
+}
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination li.active a {
+    font-weight: bold;
+}
+
+.pagination li a:hover {
+    text-decoration: underline;
+}
+
+item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-info {
+    flex-grow: 2;
+}
+
+.item-image img {
+    max-width: 200px;
+    border: 3px solid #333; 
+    border-radius: 10px; 
+    margin-top: 10px; 
+    margin-right: 10px;
+    float: right; 
+}
